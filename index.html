@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
     <head>
         <title>My Website</title>
         <meta name="description" content="A website about me" />
@@ -8,6 +8,28 @@
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <link rel="stylesheet" href="global.css" />
+        <!-- Theme Toggle Script -->
+        <script>
+            const savedTheme = localStorage.getItem("theme") || "light";
+            document.documentElement.setAttribute("data-theme", savedTheme);
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const themeToggle = document.querySelector(".theme-toggle");
+
+                themeToggle.addEventListener("click", function () {
+                    const currentTheme =
+                        document.documentElement.getAttribute("data-theme");
+                    const newTheme =
+                        currentTheme === "light" ? "dark" : "light";
+
+                    document.documentElement.setAttribute(
+                        "data-theme",
+                        newTheme
+                    );
+                    localStorage.setItem("theme", newTheme);
+                });
+            });
+        </script>
     </head>
     <body>
         <noscript>Please turn on JavaScript to view this website!</noscript>
@@ -18,7 +40,9 @@
             <ul class="nav-links">
                 <li><a href="">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="theme-toggle"></button>
         </nav>
 
         <main>
